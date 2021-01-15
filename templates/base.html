@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href={{url_for('static',filename="css/base.css")}}>
+    {% block css %}{% endblock %}
+    
+</head>
+<body>
+    <div id="header">
+        <div id=logo>
+            <b><a href='/'><p id="logo">BST Proj</p></a></b>
+        </div>
+        <div id=srch>
+            <input type="search" size="64" class="srch">
+            <button type="submit" class="srchbtn">Search</button>
+        </div>
+        <div id=login>
+            {% if token == 0 %}
+            <button class="login" type="button" onclick="location.href='/login/'">LOGIN</button>
+            {% endif %}
+            {% if token == 1 %}
+            <b><a href='/u/'>{{username}}</a></b>
+            {% endif %}
+        </div>
+    </div>
+    <div id=nav>
+        {%block nav %}
+        {% endblock %}
+        <a class="nav" href="/list/">Test Listing</a>
+        <a class="nav" href="/login/">Login</a>
+        <a class="nav" href="/signup/">Signup</a>
+    </div>
+    <div id= mainbody>
+        <div id=vids>
+            {% block content %}{% endblock %}
+            {% block video %}{% endblock %}
+        </div>
+    </div>
+    <div id='ftr'>
+        <footer id="footer">
+            <p>{% block rand %}{% endblock %}</p>
+            <p>&copy; Anmol Singh</p>
+        </footer>
+    </div>
+</body>
+</html>

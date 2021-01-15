@@ -1,0 +1,110 @@
+
+#vids{
+    display: grid;
+    grid-template-columns: 67vw 25vw;
+    grid-gap: 10px;
+}
+#vid_div{
+    grid-row: 1;
+    grid-column: 1;
+}
+video{
+    width: 100%;
+    outline-style: none;
+}
+#related{
+    grid-column: 2;
+    grid-row: 1;
+    border: 3px dashed #202020;
+}
+#recommended{
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0px;
+    width: auto;
+}
+#rec-box{
+    margin: 5px;
+    padding-bottom: 5px;
+    border-bottom: #202020 solid 1px;
+}
+#rec-a{
+    display: grid;
+    grid-template-columns: 39% 61%;
+}
+#rec-img{
+    width: 100%;
+    grid-column: 1;
+}
+#rec-text{
+    grid-column: 2;
+    padding-left: 10px;
+}
+#comments{
+    background-color: #606060;
+    margin: 0px;
+    grid-column: 1;
+    grid-row: 2;
+}
+#post-comment-div{
+    width: 90%;
+    margin: 0% 5% 0% 5%;
+}
+#post-comment-box{
+    width: 100%;
+    border: 0px;
+    color: white;
+    background-color: #454545;
+    border-bottom: 1px solid #303030;
+    overflow-wrap: break-word;
+    outline-style:none;
+    padding: 10px;
+}
+#post-comment-sub{
+    margin: 10px 0px 10px 0px;
+}
+#posted-comment{
+    width: 98%;
+    margin: 10px 1% 10px 1%;
+}
+@media only screen and (max-width:1230px){
+    #mainbody{
+        margin-left: 0px;
+        padding: 0px;
+    }
+    #nav{
+        display: none;
+    }
+    a.nav{
+        display: none;
+    }
+    #vids{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #vid_div{
+        width: 100%;
+    }
+    video{
+        width: 100%;
+    }
+    #recommended{
+        width: 100%;
+        margin: 0px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    #rec-a{
+        grid-template-columns: 29% 71%;
+    }
+    #comments{
+        width: 100%;
+        margin: 0px;
+        margin-top: 10px;
+    }
+    footer{
+        margin-left: 0px;
+    }
+}

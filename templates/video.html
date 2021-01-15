@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{v_id}} - ZYXR{% endblock %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static',filename='css/video.css')}}">{% endblock %}
+
+{% block video %}
+<div id=vid_div>
+    <div id="video_box">
+        <video controls>
+            <source src="{{url_for('static',filename=vfile)}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div><h2>{{v_name}}</h2></div>
+</div>
+<div id="related">
+    <h3>Related</h3>
+</div>
+<div id="recommended">
+    <h3>recommended</h3>
+    {% for x in thumb %}
+        {% set z = 'thumbs/'+x %}
+        <div id='rec-box'>
+            <a href='/i/{{x}}' id='rec-a'>
+                <img id='rec-img' src="{{url_for('static',filename=z)}}"">
+                <div id='rec-text'>{{x}}</div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+<div id="comments">
+    <h3>comments</h3>
+    <div id=post-comment-div>
+        <!--<button onclick="document.getElementById('post-comment-box').append('Hi')">Hello</button>-->
+        <form method="POST" action="#">
+            <input type='text' id="post-comment-box" name='post-comment-box'>
+            <input type="submit" value="Post" id='post-comment-sub'>
+        </form>
+        {% for x in com_li %}
+            <div id='posted-comment'><p>On {{v_name}} X posted:</p>{{x}}</div>
+        {% endfor %}
+        
+    </div>
+    {% for comment in get_flashed_messages() %}
+        <div>{{comment}}</div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block rand %}
+<p>Video ID: {{v_id}}</p>
+{% endblock %}

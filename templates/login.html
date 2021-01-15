@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}ZYXR-Login{% endblock %}
+{% block content %}
+<style>
+    #vids{
+        flex-direction: column;
+        align-content: center;
+    }
+    #err{
+        color: red;
+    }
+</style>
+<h1>Login</h1>
+<form action="#" method="POST">
+    <p>Name:<br><input type='text' name='name'></p>
+    <p>Password:<br><input type="password" name='pass'></p>
+    <p>
+        <input type="checkbox" name="keeplogin" value="True">
+        <input type="hidden" name="keeplogin" value="False">
+        <label for="keeplogin">Keep Me logged in</label>
+    </p>
+    <p><input type='submit' value="Submit">
+    <a href='/signup'>Signup</a></p>
+</form>
+<p id=err>{{error}}</p>
+{% endblock %}

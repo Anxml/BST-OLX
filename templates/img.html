@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{imgn}} - ZYXR{% endblock %}
+
+{% block video %}
+<div>
+    <img id='thumb_imgs' src="{{url_for('static',filename=imgsrc)}}">
+</div>
+{% endblock %}
+
+{% block video_data %}
+<div>{{imgna}}</div>
+{% endblock %}
+
+{% block rand %}
+Have a nice day! :)
+{% endblock %}

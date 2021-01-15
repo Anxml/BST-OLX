@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}ZYXR-Signup{% endblock %}
+{% block content %}
+<style>
+    #vids{
+        flex-direction: column;
+        align-content: center;
+    }
+    #err{
+        color:rgba(255, 255, 0, 0.5);
+
+    }
+</style>
+<h1>Signup</h1>
+<form action="#" method="POST">
+    <p>Name:<br><input type='text' name='name'></p>
+    <p>Password:<br><input type="password" name='pass'></p>
+    <p>
+        <input type="checkbox" name="keeplogin" value="True">
+        <input type="hidden" name="keeplogin" value="False">
+        <label for="keeplogin">Keep Me logged in</label>
+    </p>
+    <p><input type='submit' value="Submit"></p>
+</form>
+{% set err = get_flashed_messages() %}
+<p id=err>{{err}}</p>
+{% endblock %}

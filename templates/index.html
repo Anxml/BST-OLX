@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}ZYXR{% endblock %}
+
+{% block loginuser %}
+    {% if token < 1 %}
+        <button class="login" type="button" onclick="location.href='/login/'">LOGIN</button>
+    {% endif %}
+    {% if token >= 1 %}
+        <b><a href='/u/'>{{username}}<sub>*</sub></a></b>
+    {% endif %}
+{% endblock  %}
+
+{% block content %}
+<div style="width: 100%;border: 1px solid #303030;padding-left: 1vw;border-radius: 2vw;background-color: #303030;"><h2>Welcome User !!</h2></div>
+    {% for x in thumb %}
+        {% set z = 'thumbs/'+x %}
+        <div id='vid-grid-box'><a href='/i/{{x}}'><img id='vid-grid-img' src="{{url_for('static',filename=z)}}""><br><br><div id='vid-grid-text'>{{x}}</div></a></div>
+    {% endfor %}
+{% endblock %}
+
+{%block nav %}
+    <a class='nav' href='/v/{{ascr}}'>Video</a>
+{% endblock %}
+
+{% block rand %}
+    <p>Your random no. is: {{rand}}</p>
+    <p>Your random YT video: {{ascr}}</p>
+{% endblock %}
