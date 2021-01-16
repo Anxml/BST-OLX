@@ -169,11 +169,11 @@ def signup():
 #
 #Listing
 #
-@app.route('/list/')
-def listing():
+@app.route('/list/<lno>')
+def listing(lno):
     username = users.chk_usr_lg(users,1)
     lgusertoken = users.chk_usr_lg(users,0)
-    return render_template('listing.html',token=lgusertoken,username=username)
+    return render_template('listing.html',token=lgusertoken,username=username,lno=lno)
 #
 #Image Page
 #

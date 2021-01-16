@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}
-    Listing
+    Listing {{lno}}
 {% endblock title %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/listing.scss') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/listing.css') }}">
 {% endblock css %}
 
 {% block video %}
-    
+    <img id="listing-img" src="{{ url_for('static', filename='thumbs/Screenshot (1).png') }}">
 {% endblock video %}
 
 {% block rand %}
