@@ -1,9 +1,56 @@
+#list-box{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 35% auto 15%;
+    grid-template-rows: auto auto auto auto;
+}
 
-#listing-img{
+#list-box > div{
+    border: grey solid 0.5px;
+}
+
+#list-img-box{
+    grid-row: span 3;
+    width: auto;
+    height: auto;
+}
+
+#list-img{
     overflow: hidden;
-    border-color: green;
-    border-width: 2px;
+    border-width: 3px;
     border-radius: 40px;
-    width: 30vw;
-    height: 30vh;
+    width: 98%;
+}
+#list-name{
+    font-size: 40px;
+    height: fit-content;
+    grid-column: span 2;
+}
+#name-hr{
+    background-color: grey;
+    width: 80%;
+    height: 1px;
+}
+#list-price{
+    color: indianred;
+    font-size: 30px;
+}
+#list-optn{
+    grid-row: span 4;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: auto;
+    margin-top: 20%;
+}
+#list-optn-btn{
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 5px 0px 5px 0px;
+}
+#list-features{
+    padding: 3%;
+}
+#list-addr,#list-specs{
+    grid-column: span 3;
 }

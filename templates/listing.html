@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    Listing {{lno}}
+    {{lname}} - Sller
 {% endblock title %}
 
 {% block css %}
@@ -8,7 +8,41 @@
 {% endblock css %}
 
 {% block video %}
-    <img id="listing-img" src="{{ url_for('static', filename='thumbs/Screenshot (1).png') }}">
+<div id="list-box">
+    <div id="list-img-box"><img id="list-img" src="{{ url_for('static', filename='thumbs/Screenshot (10).png') }}"></div>
+    <div id="list-name">{{ lname }}<div id="name-hr"></div></div>
+    <div id="list-price">{{ lprice }}₹</div>
+    <div id="list-optn">
+        <button id="list-optn-btn" disabled="disabled">Chat</button>
+        <button id="list-optn-btn" disabled="disabled">Buy Now</button>
+    </div>
+    <div id="list-features">
+        {{ lfeature }}
+        Some feature XD
+        <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+        ASd <br>
+    </div>
+    <div id="list-specs">
+        <h1><u>Specs</u></h1>
+        <p>{{ lspecs }}</p>
+    </div>
+    <div id="list-addr">
+        <h1><u>Address</u></h1>
+        <p>{{ laddr }}</p>
+    </div>
+</div>
 {% endblock video %}
 
 {% block rand %}
