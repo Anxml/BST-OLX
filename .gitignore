@@ -3,3 +3,5 @@
 *.png
 .vscode/settings.json
 *.pyc
+index.exe
+index.spec
