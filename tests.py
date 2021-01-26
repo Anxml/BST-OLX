@@ -6,8 +6,14 @@ x= {
 }
 y= {1:'b'}
 z = 1 
-if y[1] in x:
-    print(x)
-et = time.monotonic()*1000
+#if y[1] in x:
+    #print(x)
+#et = time.monotonic()*1000
 
-print(os.listdir())
+#print(os.listdir())
+
+anydict={
+    'anylist' : ['abcd','efgh']
+}
+
+print (anydict['anylist'][0])

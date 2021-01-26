@@ -2,7 +2,8 @@
 {% block title %}{{user}} - ZYXR{% endblock %}
 
 {% block content %}
-<h2>Hello <b>{{user}}</b>!!</h2>
+<h2>Hello <b>{{dispname}}</b>!!</h2>
+<h3>Your username is {{ username }}</h3>
 <form method="POST"><input type="submit" value="Logout" name='logout'></form>
 {% endblock %}
-{% block rand %}<p>Your random no. is: {{rand}}</p>{% endblock %}
+{% block rand %}{% endblock %}
