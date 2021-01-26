@@ -69,23 +69,6 @@ def signup():
         dispname = str(request.form['dispname'])
         paswd = str(request.form['pass'])
         keeplogin = request.form['keeplogin'] #gets a T/F value of keeping the user logged in
-        '''
-        if users.users_details[name] == [ dispname , paswd]:
-            del paswd
-            randID = users.give_token(users)
-            while randID in sesh_manager.user_login:
-                try:
-                    randID = users.give_token(users)
-                except randID not in sesh_manager.user_login:
-                    break
-            #give user a random ID
-            session[randID] = name
-            #save it to session
-            sesh_manager.user_login[randID] = name
-            #save it to db of all users currently logged in
-            secure_lg_cookie = make_response(render_template('lg_success.html'))
-            #this is required to make a cookie
-        '''
         fielderr = False
         if name == '' or dispname == '' or paswd == '':
             flash ('Please fill all fields')
