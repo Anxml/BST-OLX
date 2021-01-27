@@ -74,8 +74,14 @@ class list_mgr():
         'qwer':['dQw4w9WgXcQ']
     }
     lists_data = {
-        'dQw4w9WgXcQ':['My Add','2323','Some Feature','Some Specs','43rd Street Bababooey Area  Bruh City','qwer']
+        'dQw4w9WgXcQ':['My Add','2323','Some Feature','Some Specs','43rd Street Bababooey Area  Bruh City','Screenshot (10).png','qwer']
     }
+    def create_lno(self,lnol=12):
+        chars = string.digits
+        genlno = str()
+        for i in range(lnol):
+            genlno += random.choice(chars)
+        return genlno
     def import_list_users(self):
         lusers = users.users_details.keys()
         for indiusers in lusers:

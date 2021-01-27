@@ -9,7 +9,8 @@
 
 {% block video %}
 <div id="list-box">
-    <div id="list-img-box"><img id="list-img" src="{{ url_for('static', filename='thumbs/Screenshot (10).png') }}"></div>
+    {% set limgdisp = 'thumbs/'+limg %}
+    <div id="list-img-box"><img id="list-img" src="{{ url_for('static', filename=limgdisp) }}"></div>
     <div id="list-name">{{ lname }}<div id="name-hr"></div></div>
     <div id="list-price">{{ lprice }}₹</div>
     <div id="list-optn">

@@ -4,6 +4,9 @@
 {% block content %}
 <h2>Hello <b>{{dispname}}</b>!!</h2>
 <h3>Your username is {{ username }}</h3>
-<form method="POST"><input type="submit" value="Logout" name='logout'></form>
+<button onclick="location.href='/newlisting'">Create Listing</button>
+<form method="POST">
+    <input type="submit" value="Logout" name='logout'>
+</form>
 {% endblock %}
 {% block rand %}{% endblock %}

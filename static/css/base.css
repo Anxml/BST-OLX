@@ -158,6 +158,11 @@ footer{
     padding-left: 1vw;
     width: auto;
 }
+#err{
+    color:rgb(240, 52, 52);
+    background-color: aliceblue;
+
+}
 @media only screen and (max-width: 768px){
     #vid-grid-img{
         width: 300px;

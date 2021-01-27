@@ -6,10 +6,6 @@
         flex-direction: column;
         align-content: center;
     }
-    #err{
-        color:rgba(255, 255, 0, 0.5);
-
-    }
 </style>
 <h1>Signup</h1>
 <form action="#" method="POST">
@@ -23,6 +19,5 @@
     </p>
     <p><input type='submit' value="Submit"></p>
 </form>
-{% set err = get_flashed_messages() %}
 <p id=err>{{err}}</p>
 {% endblock %}
