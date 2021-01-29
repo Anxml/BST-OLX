@@ -4,32 +4,45 @@
     Create A New Listing
 {% endblock title %}
 
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/newlisting.css') }}">
+{% endblock css %}
+
 {% block content %}
-    <form action="#" method="POST">
+    <form action="" method="POST" id="listform" enctype="multipart/form-data">
+        {{ lform.csrf_token() }}
         <p>
             Name of Listing:<br>
-            <input type="text" name="" id="">
-        </p>
-        <p>
+            {{ lform.lname }} <br><br>
             Price:<br>
-            <input type="number" name="" id="">
+            {{ lform.lprice }}
         </p>
         <p>
             Image of Listing:<br>
-            <input type="file" name="" id="">
+            <!--
+                <input type="file" name="limg" required>
+            -->
+             {{ lform.limg }}
         </p>
         <p>
             Features of the Product:<br>
-            <input type="text" name="" id="">
+            {{ lform.lfeature }}
         </p>
         <p>
             Specification of the Product:<br>
-            <input type="text" name="" id="">
+            {{ lform.lspecs }}
         </p><p>
             Address of the product sale:<br>
-            <input type="text" name="" id="">
+            {{ lform.laddr }}
         </p>
-
+        <p>
+            {{ lform.lsubmit }}
+        </p>
+        {% for field, errors in lform.errors.items() %}
+        <small class="form-text text-muted ">
+            {{ ', '.join(errors) }}
+        </small>
+        {% endfor %}
     </form>
 {% endblock content %}
 

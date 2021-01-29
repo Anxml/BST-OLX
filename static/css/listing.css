@@ -1,3 +1,6 @@
+pre{
+    font-family: Nanum Gothic,sans-serif;
+}
 #list-box{
     width: 100%;
     display: grid;
@@ -6,7 +9,7 @@
 }
 
 #list-box > div{
-    border: grey solid 0.5px;
+    border: grey solid 0px;
 }
 
 #list-img-box{
@@ -21,10 +24,16 @@
     border-radius: 40px;
     width: 98%;
 }
+#list-img:hover{
+    transform: scale(1.25);
+}
 #list-name{
     font-size: 40px;
     height: fit-content;
     grid-column: span 2;
+}
+#list-auth{
+    font-size: small;
 }
 #name-hr{
     background-color: grey;

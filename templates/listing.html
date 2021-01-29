@@ -9,28 +9,27 @@
 
 {% block video %}
 <div id="list-box">
-    {% set limgdisp = 'thumbs/'+limg %}
-    <div id="list-img-box"><img id="list-img" src="{{ url_for('static', filename=limgdisp) }}"></div>
-    <div id="list-name">{{ lname }}<div id="name-hr"></div></div>
+    {% set limgdisp = 'listthumb/'+lno+'.jpg' %}
+    <div id="list-img-box"><a href="/i/{{lno}}.jpg"><img id="list-img" src="{{ url_for('static', filename=limgdisp) }}"></a></div>
+    <div id="list-name">{{ lname }}<br><div id="list-auth">By {{lauth}}</div><div id="name-hr"></div></div>
     <div id="list-price">{{ lprice }}₹</div>
     <div id="list-optn">
         <button id="list-optn-btn" disabled="disabled">Chat</button>
         <button id="list-optn-btn" disabled="disabled">Buy Now</button>
     </div>
     <div id="list-features">
-        {{ lfeature }}
+        <pre>{{ lfeature }}</pre>
     </div>
     <div id="list-specs">
         <h1><u>Specs</u></h1>
-        <p>{{ lspecs }}</p>
+        <p><pre>{{ lspecs }}</pre></p>
     </div>
     <div id="list-addr">
         <h1><u>Address</u></h1>
-        <p>{{ laddr }}</p>
+        <p><pre>{{ laddr }}</pre></p>
     </div>
 </div>
 {% endblock video %}
 
 {% block rand %}
-    HeeHee
 {% endblock rand %}

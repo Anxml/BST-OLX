@@ -11,10 +11,12 @@
 {% endblock  %}
 
 {% block content %}
-<div style="width: 100%;border: 1px solid #303030;padding-left: 1vw;border-radius: 2vw;background-color: #303030;"><h2>Welcome User !!</h2></div>
+{% if token == 0 %}
+<div style="width: 100%;border: 1px solid #303030;padding-left: 1vw;border-radius: 2vw;background-color: #303030;"><h2>Welcome User !!</h2></div>    
+{% endif %}
     {% for x in thumb %}
-        {% set z = 'thumbs/'+x %}
-        <div id='vid-grid-box'><a href='/i/{{x}}'><img id='vid-grid-img' src="{{url_for('static',filename=z)}}""><br><br><div id='vid-grid-text'>{{x}}</div></a></div>
+        {% set z = 'listthumb/'+x+'.jpg' %}
+        <div id='vid-grid-box'><a href='/list/{{x}}'><img id='vid-grid-img' src="{{url_for('static',filename=z)}}""><div id='vid-grid-text'>{{ lname[x][0] }}</div></a><div id="vid-grid-text2">{{ lname[x][1] }}₹</div></div>
     {% endfor %}
 {% endblock %}
 

@@ -4,7 +4,7 @@
     text-decoration: none;
 }
 a {
-    color:green;
+    color:yellowgreen;
     text-decoration: none;
 }
 body{
@@ -21,12 +21,12 @@ body{
     background-color: #252525;
 }
 ::-webkit-scrollbar-thumb{
-    background-color: green;
+    background-color: yellowgreen;
 }
 input,button{
     padding: 6px;
     background-color: #252525;
-    border: 2px solid green;
+    border: 2px solid yellowgreen;
     color: #fff;
     outline-style: none;
 }
@@ -39,7 +39,7 @@ input,button{
     align-items: center;
     top:0;
     background-color:#303030;
-    border-bottom: 5px solid green;
+    border-bottom: 5px solid yellowgreen;
     padding-top: 7px;
     padding-bottom:6px;
 }
@@ -61,12 +61,12 @@ input,button{
     padding: 6px 10px 6px 10px;
     background-color: #252525;
     border-radius: 6px 0px 0px 6px;
-    border: 2px solid green;
+    border: 2px solid yellowgreen;
     color: #fff;
 }
 .srchbtn{
     background-color: #252525;
-    border: 2px solid green;
+    border: 2px solid yellowgreen;
     border-left: 0px;
     border-radius: 0px 6px 6px 0px ;
     color: #cfcfcf;padding: 6px;
@@ -76,17 +76,17 @@ input,button{
     margin-left: 1%;
     margin-right: 2%;
 }
-.login{
+.login,.showdispname{
     background-color: #303030;
     color: #cfcfcf;
-    border: 2px solid green;
+    border: 2px solid yellowgreen;
     border-radius: 2px;
     padding: 6px 5px 6px 5px;
 }
 .srchbtn,.srch,.login{
     outline-style: none;
 }
-.srchbtn:hover,.login:hover{
+.srchbtn:hover,.login:hover,.showdispname:hover{
     color:rgb(255, 255, 255)
 }
 #nav{
@@ -108,7 +108,7 @@ a.nav{
     text-align: center;   
 }
 #nav a:hover{
-    background-color: green;
+    background-color: yellowgreen;
     color:black ;
 }
 #mainbody{
@@ -130,14 +130,21 @@ a.nav{
     min-height: 144px;
     margin: 10px 5px 10px 5px;
     border:1px solid rgba(255, 255, 0, 0.100);
-    border-radius: 50px;
+    border-radius: 40px;
     overflow: hidden;
 }
 #vid-grid-img{
     width: 390px;
 }
 #vid-grid-text{
-    text-align:center;
+    text-align:left;
+    padding-left: 25px;
+    color: white;
+}
+#vid-grid-text2{
+    text-align: right;
+    padding-right: 25px;
+    color: rgb(212, 46, 46);
 }
 #thumb_imgs{
     width: 80vw;
@@ -162,6 +169,13 @@ footer{
     color:rgb(240, 52, 52);
     background-color: aliceblue;
 
+}
+textarea{
+    background-color: #303030;
+    color: white;
+    width: 40vw;
+    height: 11vw;
+    resize: vertical;
 }
 @media only screen and (max-width: 768px){
     #vid-grid-img{
@@ -191,7 +205,7 @@ footer{
         opacity: 100%;
     }
     .srchbtn{
-        border:2px solid green;
+        border:2px solid yellowgreen;
         border-radius: 0px;
     }
     #nav{

@@ -1,0 +1,12 @@
+#listform{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+input{
+    width: 40vw;
+    overflow-wrap: break-word;
+    outline-style:none;
+    padding: 10px;
+}
