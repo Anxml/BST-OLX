@@ -42,22 +42,40 @@ class SignupForm(FlaskForm):
         excluded_chars = "*?!'^+%&/()=}][{$#ⅡⅠ,"
         for char in self.dispname.data:
             if char in excluded_chars:
-                raise ValidationError(f"Character {char} is not allowed in username.")
+                raise ValidationError(f"Character {char} is not allowed in display name.")
     def validate_paswd(self, paswd):
         excluded_chars = "*Ⅱ Ⅰ"
         for char in self.paswd.data:
             if char in excluded_chars:
-                raise ValidationError(f"Character {char} is not allowed in username.")
+                raise ValidationError(f"Character {char} is not allowed in password.")
 class NewListingForm(FlaskForm):
-    lname = StringField()
-    lprice = DecimalField(places=2)
-    lfeature = TextAreaField()
-    lspecs = TextAreaField()
-    laddr = TextAreaField()
-    limg = FileField()
+    lname = StringField(validators=[DataRequired(),Length(min=5,max=40)])
+    lprice = DecimalField(places=2,validators=[DataRequired(),Length(min=1)])
+    lfeature = TextAreaField(validators=[Length(min=5)])
+    lspecs = TextAreaField(validators=[DataRequired(),Length(min=5)])
+    laddr = TextAreaField(validators=[DataRequired(),Length(min=5)])
+    limg = FileField(validators=[DataRequired()])
     lsubmit = SubmitField(label='Submit')
-
-    
+    def validate_lname(self,lname):
+        excluded_chars = "*?!'^+%&/()=}][{$#ⅡⅠ,"
+        for char in self.lname.data:
+            if char in excluded_chars:
+                raise ValidationError(f"Character {char} is not allowed in listing name.")
+    def validate_lfeature(self,lfeature):
+        excluded_chars = "*?!'^+%&/()=}][{$#ⅡⅠ,"
+        for char in self.lfeature.data:
+            if char in excluded_chars:
+                raise ValidationError(f"Character {char} is not allowed in features.")
+    def validate_lspecs(self,lspecs):
+        excluded_chars = "*?!'^+%&/()=}][{$#ⅡⅠ,"
+        for char in self.lspecs.data:
+            if char in excluded_chars:
+                raise ValidationError(f"Character {char} is not allowed in specifications.")
+    def validate_laddr(self,laddr):
+        excluded_chars = "*?!'^+%&/()=}][{$#ⅡⅠ,"
+        for char in self.laddr.data:
+            if char in excluded_chars:
+                raise ValidationError(f"Character {char} is not allowed in username.")
 #
 #Index (Home)
 #
@@ -154,13 +172,14 @@ def img(img):
 def lg_usr():
     dispname = users.chk_usr_lg(users,1)
     lgusertoken = users.chk_usr_lg(users,0)
-    username = sesh_manager.user_login[request.cookies.get('id')]
-    if request.cookies.get('id') in sesh_manager.user_login:
+    usercookie = request.cookies.get('id')
+    username = sesh_manager.user_login[usercookie]
+    if usercookie in sesh_manager.user_login:
         if request.method == 'POST':
             request.form['logout']
-            sesh_manager.user_login.pop(request.cookies.get('id'))
+            sesh_manager.user_login.pop(usercookie)
             return redirect(url_for('home'))
-        return render_template('user.html',dispname=dispname,token=lgusertoken,username=username)
+        return render_template('user.html',dispname=dispname,token=lgusertoken,username=username,thumb=list_mgr.user_lists[username],lname=list_mgr.lists_data)
     else :
         return redirect(url_for('login'))
 #

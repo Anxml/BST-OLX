@@ -38,11 +38,13 @@
         <p>
             {{ lform.lsubmit }}
         </p>
+        <p>
         {% for field, errors in lform.errors.items() %}
         <small class="form-text text-muted ">
             {{ ', '.join(errors) }}
         </small>
         {% endfor %}
+        </p>
     </form>
 {% endblock content %}
 

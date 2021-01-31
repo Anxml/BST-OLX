@@ -1,12 +1,42 @@
 {% extends "base.html" %}
-{% block title %}{{user}} - ZYXR{% endblock %}
+{% block title %}{{dispname}}{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+{% endblock css %}
 
 {% block content %}
-<h2>Hello <b>{{dispname}}</b>!!</h2>
-<h3>Your username is {{ username }}</h3>
-<button onclick="location.href='/newlisting'">Create Listing</button>
-<form method="POST">
-    <input type="submit" value="Logout" name='logout'>
-</form>
+<div id="list-grid">
+    <div id='btns'>
+        <div id="udname">
+            <h2>Hello <b>{{dispname}}</b>!!</h2>
+            <h3>Your username is {{ username }}</h3>
+        </div>
+        <div id="newlisting">
+            <button onclick="location.href='/newlisting'">Create Listing</button>
+        </div>
+        <div id='logout'>
+            <form method="POST">
+                <input type="submit" value="Logout" name='logout'>
+            </form>
+        </div>
+    </div>
+    <div><h1><u>Your Listings</u></h1></div>
+    <div id="vid-grid">
+        {% for x in thumb %}
+        {% set z = 'listthumb/'+x+'.jpg' %}
+        <div id='vid-grid-box'>
+            <a href='/list/{{x}}'>
+                <img id='vid-grid-img' src="{{url_for('static',filename=z)}}"">
+                <div id='vid-grid-text'>
+                    {{ lname[x][0] }}
+                </div>
+            </a>
+            <div id="vid-grid-text2">
+                {{ lname[x][1] }}₹
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
 {% block rand %}{% endblock %}
