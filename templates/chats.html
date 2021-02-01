@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+    Chats
+{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chats.css') }}">
+{% endblock css %}
+
+{% block content %}
+<div id='chats-container'>
+    <div id='chat-contacts'>
+        {% for contacts in allcontacts %}
+        <a href="/chats/{{contacts[1]}}">
+            <div id="each-contact">
+                {{ contacts[0] }}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div id='chat-area'>
+        <div id="c2v">
+            Click to view a chat
+        </div>
+    </div>
+</div>
+{% endblock content %}

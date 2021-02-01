@@ -5,13 +5,11 @@ from wtforms import StringField,SubmitField,PasswordField,TextAreaField,DecimalF
 from wtforms.validators import ValidationError,DataRequired,Length
 from PIL import Image
 from datetime import datetime
-import random,string,os,socket,locale
+import random,string,os,socket,locale,time
 
 upload_folder = '/static/listthumb'
-#ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app = Flask(__name__,static_folder='static')
 app.config['UPLOADED_PHOTOS_DEST'] = upload_folder
-#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'pqcwwmv'        
 #
 #
@@ -22,6 +20,7 @@ users.import_usrdata(users)
 list_mgr.import_list(list_mgr)
 list_mgr.import_list_users(list_mgr)
 list_mgr.thumb(list_mgr)
+chats.importchatuser()
 locale.setlocale(locale.LC_ALL,'English_India')
 #
 #Forms
@@ -154,7 +153,8 @@ def listing(lno):
     lspecs = list_mgr.lists_data[lno][3]
     laddr = list_mgr.lists_data[lno][4]
     lauth = users.users_details[list_mgr.lists_data[lno][6]][0]
-    return render_template('listing.html',token=lgusertoken,dispname=dispname,lno=lno,lname=lname,lauth=lauth,laddr=laddr,lspecs=lspecs,lfeature=lfeature,lprice=lprice)
+    lauthu = list_mgr.lists_data[lno][6]
+    return render_template('listing.html',token=lgusertoken,dispname=dispname,lno=lno,lname=lname,lauthu=lauthu,lauth=lauth,laddr=laddr,lspecs=lspecs,lfeature=lfeature,lprice=lprice)
 #
 #Image Page
 #
@@ -173,8 +173,8 @@ def lg_usr():
     dispname = users.chk_usr_lg(users,1)
     lgusertoken = users.chk_usr_lg(users,0)
     usercookie = request.cookies.get('id')
-    username = sesh_manager.user_login[usercookie]
     if usercookie in sesh_manager.user_login:
+        username = sesh_manager.user_login[usercookie]
         if request.method == 'POST':
             request.form['logout']
             sesh_manager.user_login.pop(usercookie)
@@ -205,6 +205,39 @@ def newlisting():
         return render_template('newlisting.html',dispname=dispname,token=lgusertoken,lform=lform)
     else:
         return redirect(url_for('home'))
+#
+#Chats
+#
+@app.route('/chats')
+def chatspg():
+    dispname = users.chk_usr_lg(users,1)
+    lgusertoken = users.chk_usr_lg(users,0)
+    usercookie = request.cookies.get('id')
+    if usercookie in sesh_manager.user_login:
+        userid = sesh_manager.user_login[usercookie]
+        contactsperuser = chats.chats_per_user[userid]
+        return render_template('chats.html',dispname=dispname,token=lgusertoken,allcontacts=contactsperuser)
+    else:
+        return redirect(url_for('lg_usr'))
+#
+#Chats of each ID
+#
+@app.route('/chats/<chatno>',methods=['GET','POST'])
+def chatsid(chatno):
+    dispname = users.chk_usr_lg(users,1)
+    lgusertoken = users.chk_usr_lg(users,0)
+    usercookie = request.cookies.get('id')
+    if usercookie in sesh_manager.user_login:
+        userid = sesh_manager.user_login[usercookie]
+        contactsperuser = chats.chats_per_user[userid]
+        chatdata = chats.chats_list[chatno]
+        if request.method == 'POST':
+            sentmsg = request.form['msgbox']
+            chats.chats_list[chatno].append((userid,sentmsg))
+        return render_template('chatspu.html',dispname=dispname,token=lgusertoken,allcontacts=contactsperuser,chatdata=chatdata)
+    else:
+        return redirect(url_for('lg_usr'))
+
 #
 #Error Handling
 #

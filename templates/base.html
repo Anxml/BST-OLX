@@ -32,6 +32,7 @@
         {%block nav %}
         {% endblock %}
         <a class="nav" href="/">Home</a>
+        <a class="nav" href="/chats">Chats</a>
         {% if token == 0 %}
             <a class="nav" href="/login/">Login</a>
             <a class="nav" href="/signup/">Signup</a>
@@ -41,10 +42,8 @@
         {% endif %}
     </div>
     <div id= mainbody>
-        <div id=vids>
             {% block content %}{% endblock %}
             {% block video %}{% endblock %}
-        </div>
     </div>
     <div id='ftr'>
         <footer id="footer">

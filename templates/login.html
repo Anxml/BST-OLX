@@ -10,17 +10,19 @@
         color: red;
     }
 </style>
-<h1>Login</h1>
-<form action="#" method="POST">
-    <p>Name:<br><input type='text' name='name'></p>
-    <p>Password:<br><input type="password" name='pass'></p>
-    <p>
-        <input type="checkbox" name="keeplogin" value="True">
-        <input type="hidden" name="keeplogin" value="False">
-        <label for="keeplogin">Keep Me logged in</label>
-    </p>
-    <p><input type='submit' value="Login">
-    <a href='/signup'>Or Signup</a></p>
-</form>
-<p id=err>{{err}}</p>
+<div id=vids>
+    <h1>Login</h1>
+    <form action="#" method="POST">
+        <p>Name:<br><input type='text' name='name'></p>
+        <p>Password:<br><input type="password" name='pass'></p>
+        <p>
+            <input type="checkbox" name="keeplogin" value="True">
+            <input type="hidden" name="keeplogin" value="False">
+            <label for="keeplogin">Keep Me logged in</label>
+        </p>
+        <p><input type='submit' value="Login">
+            <a href='/signup'>Or Signup</a></p>
+        </form>
+        <p id=err>{{err}}</p>
+</div>
 {% endblock %}

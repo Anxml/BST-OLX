@@ -11,7 +11,7 @@
 <div id="list-box">
     {% set limgdisp = 'listthumb/'+lno+'.jpg' %}
     <div id="list-img-box"><a href="/i/{{lno}}.jpg"><img id="list-img" src="{{ url_for('static', filename=limgdisp) }}"></a></div>
-    <div id="list-name">{{ lname }}<br><div id="list-auth">By {{lauth}}</div><div id="name-hr"></div></div>
+    <div id="list-name">{{ lname }}<br><div id="list-auth">By {{lauth}}({{lauthu}})</div><div id="name-hr"></div></div>
     <div id="list-price">{{ lprice }}₹</div>
     <div id="list-optn">
         <button id="list-optn-btn" disabled="disabled">Chat</button>

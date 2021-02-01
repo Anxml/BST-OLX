@@ -1,5 +1,6 @@
 import random,string,os
 from flask import *
+import time
 #contains all of the variable storage and stuff for index.py
 #user database with username, Display Name, password 
 #
@@ -86,3 +87,16 @@ class list_mgr():
             eachdatafield = eachitem.split('Ⅰ')
             list_mgr.lists_data[eachdatafield[5]]=[eachdatafield[0],eachdatafield[1],eachdatafield[2],eachdatafield[3],eachdatafield[4],eachdatafield[5],eachdatafield[6]]        
         list_data.close()
+#
+#Chat Functionality
+#
+class chats():
+    chats_list = {
+        '11012':[('qwer','anmol'),[('qwer','anmol'),('qwer','hello guyy'),('anmol','Hii')]]
+    }
+    chats_per_user = {
+        'qwer':[('Anmol Singh','11012')]
+    }
+    def importchatuser():
+        for eachuser in users.users_details.keys():
+            chats.chats_per_user[eachuser] = []

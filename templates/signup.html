@@ -11,22 +11,24 @@
     }
 
 </style>
-<h1>Signup</h1>
-<form action="" method="post">
-{{ form.csrf_token() }}
-{{ form.username.label }} <br>
-{{ form.username }} <br>
-{{ form.errors.username }}<br>
-{{ form.dispname.label }} <br>
-{{ form.dispname }} <br><br>
-{{ form.paswd.label }} <br>
-{{ form.paswd }} <br><br>
-{{ form.submit }} <br>
-{% for field, errors in form.errors.items() %}
-    <small class="errors">
-        {{ ', '.join(errors) }}
-    </small>
-{% endfor %}
+<div id=vids>
+    <h1>Signup</h1>
+    <form action="" method="post">
+        {{ form.csrf_token() }}
+        {{ form.username.label }} <br>
+        {{ form.username }} <br>
+        {{ form.errors.username }}<br>
+        {{ form.dispname.label }} <br>
+        {{ form.dispname }} <br><br>
+        {{ form.paswd.label }} <br>
+        {{ form.paswd }} <br><br>
+        {{ form.submit }} <br>
+        {% for field, errors in form.errors.items() %}
+        <small class="errors">
+            {{ ', '.join(errors) }}
+        </small>
+        {% endfor %}
 </form>
 <p id=err>{{err}}</p>
+</div>
 {% endblock %}
