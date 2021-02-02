@@ -15,6 +15,8 @@
 }
 #each-contact:hover{
     background-color: #303030;
+    transition: 0.5s;
+    border-radius: 50px;
 }
 #chat-area{
     border: #604030 solid 4px;
@@ -38,6 +40,9 @@
 }
 #each-msg{
     padding: 1% 0% 0% 2%;
+}
+#msg-sender{
+    color: greenyellow;
 }
 #msg-form{
     width: 100%;

@@ -154,7 +154,12 @@ def listing(lno):
     laddr = list_mgr.lists_data[lno][4]
     lauth = users.users_details[list_mgr.lists_data[lno][6]][0]
     lauthu = list_mgr.lists_data[lno][6]
-    return render_template('listing.html',token=lgusertoken,dispname=dispname,lno=lno,lname=lname,lauthu=lauthu,lauth=lauth,laddr=laddr,lspecs=lspecs,lfeature=lfeature,lprice=lprice)
+    usercookie = request.cookies.get('id')
+    if usercookie in sesh_manager.user_login:
+        username = sesh_manager.user_login[usercookie]
+    else:
+        username = 'null'
+    return render_template('listing.html',token=lgusertoken,dispname=dispname,lno=lno,lname=lname,lauthu=lauthu,lauth=lauth,laddr=laddr,lspecs=lspecs,lfeature=lfeature,lprice=lprice,username=username)
 #
 #Image Page
 #
@@ -230,14 +235,32 @@ def chatsid(chatno):
     if usercookie in sesh_manager.user_login:
         userid = sesh_manager.user_login[usercookie]
         contactsperuser = chats.chats_per_user[userid]
-        chatdata = chats.chats_list[chatno]
+        chatdata = chats.chats_list[chatno][1]
         if request.method == 'POST':
             sentmsg = request.form['msgbox']
-            chats.chats_list[chatno].append((userid,sentmsg))
+            chats.chats_list[chatno][1].append((userid,sentmsg))
         return render_template('chatspu.html',dispname=dispname,token=lgusertoken,allcontacts=contactsperuser,chatdata=chatdata)
     else:
         return redirect(url_for('lg_usr'))
-
+#
+#Start a Chat
+#
+@app.route('/newchat/<lno>')
+def newchat(lno):
+    dispname = users.chk_usr_lg(users,1)
+    lgusertoken = users.chk_usr_lg(users,0)
+    usercookie = request.cookies.get('id')
+    if usercookie in sesh_manager.user_login:
+        chatreciever = list_mgr.lists_data[lno][6]
+        chatsender = sesh_manager.user_login[usercookie]
+        if chatsender in chats.chats_per_user[chatreciever][0]:
+            return redirect('/chats')
+        if chatsender == chatreciever:
+            return redirect(url_for('lg_usr'))
+        chatno = chats.newchatstartfunc(chatsender,chatreciever,lno) 
+        return redirect('/chats/%s'%chatno)
+    else:
+        return redirect('/list/%s'%lno)
 #
 #Error Handling
 #

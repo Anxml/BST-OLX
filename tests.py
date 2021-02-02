@@ -1,4 +1,4 @@
-import time, os
+import time, os,collections
 #stt= time.monotonic()*1000
 #x= {'a':2,'b':3,}
 #y= {1:'b'}
@@ -20,8 +20,8 @@ x = [('a','b'),('c','d'),('e','f')]
 for i in range(len(x)):
     print(x[i][i-1])
 '''
-randostring = 'hello🥵'
-print(randostring)
-anyfile = open('tests.json','a',encoding='utf-16')
-anyfile.write(randostring)
-anyfile.close()
+chats_list = {
+    '11012':[('qwer','anmol'),[('qwer','anmol'),('qwer','hello guyy'),('anmol','Hii')]]
+    }
+if 'anmol' in chats_list['11012'][0]:
+    print(chats_list)

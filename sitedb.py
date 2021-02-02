@@ -95,8 +95,34 @@ class chats():
         '11012':[('qwer','anmol'),[('qwer','anmol'),('qwer','hello guyy'),('anmol','Hii')]]
     }
     chats_per_user = {
-        'qwer':[('Anmol Singh','11012')]
+        'qwer':[('anmol','11012')],
+        'anmol':[('qwer','11012')]
     }
+    def newchatno(cno=6):
+        chars = string.digits
+        chatno = str()
+        for i in range(cno):
+            chatno += random.choice(chars)
+        if chatno in chats.chats_list:
+            chats.newchatno()
+        return chatno
     def importchatuser():
         for eachuser in users.users_details.keys():
-            chats.chats_per_user[eachuser] = []
+            if eachuser in chats.chats_per_user:
+                pass
+            else:
+                chats.chats_per_user[eachuser] = []
+    def newchatstartfunc(chatsender,chatreciever,lno):
+        contactlist = list_mgr.lists_data[lno][0]
+        newchatno = chats.newchatno()
+        chats.chats_list[newchatno] = [(chatsender,chatreciever),[('System','%s contacted %s for %s'%(chatsender,chatreciever,contactlist))]]
+        if chatsender in chats.chats_per_user:
+            chats.chats_per_user[chatsender].append((chatreciever,newchatno))
+        else:
+            chats.chats_per_user[chatsender] = [(chatreciever,newchatno)]
+
+        if chatreciever in chats.chats_per_user:
+            chats.chats_per_user[chatreciever].append((chatsender,newchatno))
+        else:
+            chats.chats_per_user[chatreciever] = [(chatsender,newchatno)]
+        return newchatno

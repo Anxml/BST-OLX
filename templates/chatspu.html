@@ -20,7 +20,7 @@
     <div id='chat-area'>
         <div id='chat-area-scrollable'>
             {% for eachchat in chatdata %}
-            <div id="each-msg">{{ eachchat[0] }}:{{ eachchat[1] }}</div>
+            <div id="each-msg"><span id="msg-sender">{{ eachchat[0] }}:</span>{{ eachchat[1] }}</div>
             {% endfor %}
         </div>
         <form action="" method="POST" id="msg-form">

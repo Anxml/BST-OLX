@@ -14,8 +14,10 @@
     <div id="list-name">{{ lname }}<br><div id="list-auth">By {{lauth}}({{lauthu}})</div><div id="name-hr"></div></div>
     <div id="list-price">{{ lprice }}₹</div>
     <div id="list-optn">
-        <button id="list-optn-btn" disabled="disabled">Chat</button>
-        <button id="list-optn-btn" disabled="disabled">Buy Now</button>
+        {% if lauthu != username %}
+        <button id="list-optn-btn" onclick="location.href='/newchat/{{lno}}'">Chat</button>
+        <button id="list-optn-btn" disabled="disabled">Buy Now(N/A)</button>     
+        {% endif %}
     </div>
     <div id="list-features">
         <pre>{{ lfeature }}</pre>
